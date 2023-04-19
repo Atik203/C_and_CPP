@@ -1,35 +1,42 @@
 #include<stdio.h>
 int main()
 {
-    long long int a,b,c;
-    scanf("%lld %lld %lld ",&a,&b,&c);
-    long long int mn=0;
-    if(a<b && a<c)
-   { 
-    mn=a;
-   }
-    else if(b<a && b<c)
+ long long int e,m,k;
+ long long result=0;
+ scanf("%lld %lld %lld",&e,&m,&k);
+
+if(e==0 && k==0)
+{
+    printf("0\n");
+}
+else
+{  
+    long long min=e;
+    if(m<min)
     {
-        mn=b;
+        min=m;
     }
-    else
+    if(k<min)
     {
-         mn=c; 
-         }
-    a-=mn;
-    b-=mn;
-    c-=mn;
-    long long int x=a/2;
-    long long int ans;
-    if(x<c)
-    {
-        ans=mn+x;
+        min=k;
     }
-    else
-    {
-        ans=mn+c;
-    }
-    printf("%lld",ans);
+ 
+   e-=min;
+   m-=min;
+   k-=min;
+   result+=min;
+  
+    if(e/2<k)
+  {
+     result+=e/2;
+  }
+else
+{
+    result+=k;
+}
+printf("%lld",result);
+
+}
 
 return 0;
 }
