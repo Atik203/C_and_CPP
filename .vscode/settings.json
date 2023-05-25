@@ -1,6 +1,8 @@
 {
     "cmake.sourceDirectory": "O:/C langauge/Practice",
     "files.associations": {
-        "random": "cpp"
+        "random": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp"
     }
 }
