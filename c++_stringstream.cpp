@@ -6,7 +6,7 @@ int main()
    getline(cin,s);
    stringstream ss(s);
    string word;
-   int count = 0;
+//    int count = 0;
 //     while(ss>>word) 
 //    {
 //       count++;
