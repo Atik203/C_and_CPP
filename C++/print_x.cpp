@@ -1,47 +1,31 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 int main() {
     int n;
     cin >> n;
-    int spaces = 0;
-    int mid = n / 2;
+    int mid=(n+1)/2;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) 
+        {
+            if (i == mid && j == mid) 
+            {
+                cout << "X";
+            } 
+            else if (i == j ) 
+            {
+                cout << "\\";
+            } else if (i + j == n + 1) 
+            {
+                cout << "/";
+            } 
 
-    for (int i = 0; i < mid; i++) 
-    {
-        for (int i = 0; i < spaces; i++) 
-        {
-            cout <<" ";
+            else 
+            {
+                cout << " ";
+            }
         }
-        cout << "\\";
-        for (int i = 0; i < n- 2*spaces-2; i++) 
-        {
-            cout <<" ";
-        }
-        cout << "/" << endl;
-        spaces++;
-    }
-
-    for (int i = 0; i < spaces; i++) 
-    {
-        cout <<" ";
-    }
-    cout << "X" << endl;
-    spaces--;
-
-    for (int i = 0; i<mid; i++) 
-    {
-        for (int i = 0; i < spaces; i++) 
-        {
-            cout << " ";
-        }
-        cout << "/";
-        for (int i = 0; i < n - 2 * spaces - 2; i++) 
-        {
-            cout << " ";
-        }
-        cout << "\\" << endl;
-        spaces--;
+        cout << endl;
     }
 
     return 0;
