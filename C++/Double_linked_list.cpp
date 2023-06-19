@@ -120,6 +120,6 @@ int main()
     }
     print_normal(head);
     print_reverse(tail);
-
+    
     return 0;
 }
