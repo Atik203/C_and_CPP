@@ -35,6 +35,7 @@ void reverse(node * head,node * tail)
     i=i->next;
     j=j->prev;
   }
+  swap(i->val,j->val);
 }
 
 int main()
