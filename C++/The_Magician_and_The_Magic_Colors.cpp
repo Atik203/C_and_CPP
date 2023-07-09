@@ -28,12 +28,12 @@ while(!inputQ.empty())
     char s=inputQ.front();
     inputQ.pop();
 char t;
-if(tempSt.empty()) 
+ if(tempSt.empty()) 
    {
       tempSt.push(s);
       t=tempSt.top();
    }
-else
+ else
     {
 
  if((s=='R' && t=='B') || (s=='B' && t=='R'))
@@ -56,15 +56,15 @@ else
         mixQ.push('C');
     }
 
-else if(s=='B' && tempSt.top()=='B' )
+ else if(s=='B' && tempSt.top()=='B' )
    {
     tempSt.pop();
    }
-else if(s=='R' && tempSt.top() =='R')
+ else if(s=='R' && tempSt.top() =='R')
    {
     tempSt.pop();
    }
-else if(s=='G' && tempSt.top() =='G')
+ else if(s=='G' && tempSt.top() =='G')
    {
     tempSt.pop();
    }
@@ -76,12 +76,12 @@ while(!mixQ.empty())
    char n=mixQ.front();
     mixQ.pop();
     char t;
-if(mixSt.empty())
+ if(mixSt.empty())
    {
     mixSt.push(n); 
     t=mixSt.top();
    }
-else
+ else
     {
      if(n==t)
      {
