@@ -1,56 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 int main()
 {
     int t;
     cin >> t;
     while (t--)
     {
-        multiset<int> s;
-        int n;
+        int n, cnt[2] = {0};
         cin >> n;
-        for (int i = 0; i < 2 * n; i++)
+        for (int i = 1, x; i <= n * 2; i++)
         {
-            int a;
-            cin >> a;
-            s.insert(a);
+            cin >> x;
+            cnt[x % 2]++;
         }
-
-        bool odd = true;
-        for (int i = 1; i <= n; i++)
-        {
-            auto it = s.lower_bound(1); // Find the first odd element in the set
-            if (it == s.end())
-            {
-                odd = false;
-                break;
-            }
-            int oddElement = *it;
-            s.erase(it); // Remove the odd element from the set
-
-            it = s.lower_bound(oddElement + 1); // Find an even element greater than oddElement
-            if (it == s.end())
-            {
-                odd = false;
-                break;
-            }
-            int evenElement = *it;
-            s.erase(it); // Remove the even element from the set
-
-            // Check if the sum of the two elements is odd
-            if ((oddElement + evenElement) % 2 != 1)
-            {
-                odd = false;
-                break;
-            }
-        }
-
-        if (odd)
-            cout << "Yes" << endl;
+        if (cnt[0] == n)
+            puts("Yes");
         else
-            cout << "No" << endl;
+            puts("No");
     }
-
     return 0;
 }
