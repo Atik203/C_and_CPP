@@ -1,43 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int search(vector<int> v, int l, int r, int k)
-{
-    if (l > r)
-    {
-        return 0;
-    }
-
-    int mid = (l + r) / 2;
-    if (v[mid] == k)
-    {
-        return 1 + search(v, l, mid - 1, k) + search(v, mid + 1, r, k);
-    }
-    else if (k > v[mid])
-    {
-        return search(v, mid + 1, r, k);
-    }
-    else
-    {
-        return search(v, l, mid - 1, k);
-    }
-}
-
 int main()
 {
     int n;
     cin >> n;
-    vector<int> v;
-    for (int i = 0; i < n; i++)
+    vector<int> arr(n);
+    for (int i = 0; i < n; ++i)
     {
-        int x;
-        cin >> x;
-        v.push_back(x);
+        cin >> arr[i];
     }
     int k;
     cin >> k;
-    int count = search(v, 0, n - 1, k);
-    if (count > 1)
+    int l = 0, r = n - 1;
+    int first = -1, last = -1;
+    while (l <= r)
+    {
+        int mid = (l + r) / 2;
+        if (arr[mid] == k)
+        {
+            first = mid;
+            r = mid - 1;
+        }
+        else if (arr[mid] < k)
+        {
+            l = mid + 1;
+        }
+        else
+        {
+            r = mid - 1;
+        }
+    }
+    l = 0, r = n - 1;
+    while (l <= r)
+    {
+        int mid = (l + r) / 2;
+        if (arr[mid] == k)
+        {
+            last = mid;
+            l = mid + 1;
+        }
+        else if (arr[mid] < k)
+        {
+            l = mid + 1;
+        }
+        else
+        {
+            r = mid - 1;
+        }
+    }
+    if (last - first > 0)
     {
         cout << "YES" << endl;
     }
