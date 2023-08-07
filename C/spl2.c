@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int s=n-1;
+    int k=1;
+  int num=2;
+    for(int i=1;i<=n;i++)
+    {
+
+       for(int j=1;j<=s;j++)
+       {
+           printf(" ");
+
+       }
+        for(int j=1;j<=k;j++)
+        {
+
+            printf("%d",num);
+
+        }
+    num+=2;
+       s--;
+       k++;
+
+        printf("\n");
+    }
+    return 0;
+}
+
