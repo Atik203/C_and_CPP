@@ -4,15 +4,23 @@ const int N = 1e5 + 7;
 // vector<pair<int, int>> adj[N];
 vector<int> adj[N];
 bool visited[N];
+int depth[N];
+int height[N];
 void dfs(int u)
 {
     visited[u] = true;
-    cout << "visiting node " << u << ": " << endl;
+    //cout << "visiting node " << u << ": " << endl;
     for (int v : adj[u])
     {
         if (visited[v] == true)
             continue;
+        depth[v] = depth[u]+1;
         dfs(v);
+        // if(height[v]+1 > height[u])
+        // {
+        //     height[u] = height[v]+1;
+        // }
+        height[u] = max(height[u],height[v]+1);
     }
 }
 int main()
@@ -38,6 +46,6 @@ int main()
     //     }
     //     cout << endl;
     // }
-
+    
     return 0;
 }
