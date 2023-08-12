@@ -36,6 +36,7 @@ int main()
         cc++;
         dfs(i, cc);
     }
+    cout << cc << endl;
     for (int i = 1; i <= cc; i++)
     {
         cout << "component " << i << " : ";
