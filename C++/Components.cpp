@@ -40,7 +40,7 @@ int main()
             dfs(i);
             if (sz[sz.size() - 1] == 1)
             {
-                sz.pop_back(); // Remove the last element if it's a single-node component
+                sz.pop_back(); 
             }
         }
     }
