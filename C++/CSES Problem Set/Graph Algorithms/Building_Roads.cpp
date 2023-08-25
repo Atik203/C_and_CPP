@@ -27,19 +27,19 @@ int main()
         g[v].push_back(u);
     }
 
-    vector<int> leaders;
+    vector<int> ans;
     for (int i = 1; i <= n; i++)
     {
         if (visited[i])
             continue;
-        leaders.push_back(i);
+        ans.push_back(i);
         dfs(i);
     }
 
-    cout << leaders.size() - 1 << endl;
-    for (int i = 0; i < leaders.size() - 1; i++)
+    cout << ans.size() - 1 << endl;
+    for (int i = 0; i < ans.size() - 1; i++)
     {
-        cout << leaders[i] << " " << leaders[i + 1] << endl;
+        cout << ans[i] << " " << ans[i + 1] << endl;
     }
 
     return 0;
