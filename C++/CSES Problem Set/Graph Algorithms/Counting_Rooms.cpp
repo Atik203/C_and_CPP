@@ -1,60 +1,57 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef pair<int, int> pii;
-const int N = 1e3 + 8;
-vector<string> g;
+#define pii pair<int, int>
+const int N = 1e3 + 5;
 bool visited[N][N];
-vector<pii> direction = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
-bool isValid(int i, int j, int n, int m)
+vector<pii> path = {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
+int n, m;
+char a[N][N];
+bool isValid(int ni, int nj)
 {
-    return (i >= 0 && i < n && j >= 0 && j < m);
+    if (ni >= 0 && ni < n && nj >= 0 && nj < m && !visited[ni][nj] && a[ni][nj] == '.')
+        return true;
+    else
+        return false;
 }
 
-void dfs(int i, int j, int n, int m)
+void dfs(int si, int sj)
 {
-    if (!isValid(i, j, n, m))
-        return;
-    if (g[i][j] == '#')
-        return;
-    if (visited[i][j])
-        return;
-
-    visited[i][j] = true;
-    for (auto v : direction)
+    visited[si][sj] = true;
+    for (int i = 0; i < 4; i++)
     {
-        dfs(i + v.first, j + v.second, n, m);
+        pii p = path[i];
+        int ni = si + p.first;
+        int nj = sj + p.second;
+        if (isValid(ni, nj))
+        {
+            dfs(ni, nj);
+        }
     }
-    // alternative way
-    // dfs(i, j + 1, n, m);
-    // dfs(i, j - 1, n, m);
-    // dfs(i - 1, j, n, m);
-    // dfs(i + 1, j, n, m);
 }
 
 int main()
 {
-    int n, m;
     cin >> n >> m;
     for (int i = 0; i < n; i++)
     {
-        string s;
-        cin >> s;
-        g.push_back(s);
+        for (int j = 0; j < m; j++)
+        {
+            cin >> a[i][j];
+        }
     }
     int count = 0;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
-            if (g[i][j] == '#')
-                continue;
-            if (visited[i][j])
-                continue;
-            dfs(i, j, n, m);
-            count++;
+            if (!visited[i][j] && a[i][j] == '.')
+            {
+                count++;
+                dfs(i, j);
+            }
         }
     }
-
     cout << count << endl;
+
     return 0;
 }
