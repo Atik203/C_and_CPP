@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-int parent[1000];
-int parentLevel[1000];
+int parent[100000];
+int parentLevel[100000];
 void dsu_set(int n)
 {
     for (int i = 1; i <= n; i++)

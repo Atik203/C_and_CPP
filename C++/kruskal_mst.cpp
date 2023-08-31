@@ -1,7 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
-int parent[100000];
-int parentSize[100000];
+class edge
+{
+public:
+    int a, b, w;
+    edge(int a, int b, int w)
+    {
+        this->a = a;
+        this->b = b;
+        this->w = w;
+    }
+};
+bool cmp(edge a, edge b)
+{
+    return a.w < b.w;
+}
+const int N = 1e5 + 5;
+int parent[N];
+int parentSize[N];
 void dsu_set(int n)
 {
     for (int i = 1; i <= n; i++)
@@ -37,18 +53,37 @@ void dsu_union(int a, int b)
         }
     }
 }
-
 int main()
 {
     int n, e;
     cin >> n >> e;
+    vector<edge> v;
+    vector<edge> ans;
     dsu_set(n);
     while (e--)
     {
-        int a, b;
-        cin >> a >> b;
+        int a, b, w;
+        cin >> a >> b >> w;
+        v.push_back(edge(a, b, w));
+    }
+    sort(v.begin(), v.end(), cmp);
+    for (edge val : v)
+    {
+        int a = val.a;
+        int b = val.b;
+        int w = val.w;
+        int leaderA = find(a);
+        int leaderB = find(b);
+        if (leaderA == leaderB)
+            continue;
+        ans.push_back(val);
         dsu_union(a, b);
     }
-    cout << find(6);
+
+    for (edge val : ans)
+    {
+        cout << val.a << " " << val.b << " " << val.w << endl;
+    }
+
     return 0;
 }
