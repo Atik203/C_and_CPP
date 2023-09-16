@@ -1,5 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
+const int N = 1e5 + 5;
+int dp[N];
+
+int make_it(int cur, int n)
+{
+    if (cur == n)
+    {
+        return true;
+    }
+
+    if (cur > n || cur < 1)
+    {
+        return false;
+    }
+
+    if (dp[cur] != -1)
+    {
+        return dp[cur];
+    }
+
+    return dp[cur] = make_it(cur + 3, n) || make_it(cur * 2, n);
+}
 
 int main()
 {
@@ -11,26 +33,13 @@ int main()
         int n;
         cin >> n;
 
-        bool dp[n + 1];
-        for (int i = 0; i <= n; i++)
+        for (int i = 1; i <= n; i++)
         {
-            dp[i] = false;
-        }
-        dp[1] = true;
 
-        for (int i = 2; i <= n; i++)
-        {
-            if (i % 2 == 0)
-            {
-                dp[i] = dp[i / 2];
-            }
-            if (i >= 3)
-            {
-                dp[i] = dp[i] || dp[i - 3];
-            }
+            dp[i] = -1;
         }
 
-        if (dp[n])
+        if (make_it(1, n))
         {
             cout << "YES" << endl;
         }
